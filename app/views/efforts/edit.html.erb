@@ -1,0 +1,21 @@
+<h1> Edit effort </h1>
+
+<% effort = Effort.find_by("id" => params["id"]) %>
+
+<h1>Edit Effort Value #<%= effort["id"] %></h1>
+
+<%= form_tag "/efforts/#{effort["id"]}", "method" => "patch" %>
+
+  <p>
+    <%= label_tag "value", "What is the value?" %>
+    <%= text_field_tag "value", effort["value"] %>
+  </p>
+
+  <p>
+    <%= label_tag "date", "What is the date?" %>
+    <%= text_field_tag "date", effort["date"] %>
+  </p>
+
+  <%= submit_tag %> or <%= link_to "Cancel", "/efforts" %>
+
+</form>

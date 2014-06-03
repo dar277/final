@@ -1,0 +1,20 @@
+<h1> Effort index </h1>
+
+<% all_efforts = Effort.read %>
+
+<%= link_to "Add a New Day's effort", "/efforts/new" %>
+
+<ul>
+
+  <% all_efforts.each do |effort| %>
+
+    <li>
+      <%= link_to effort["value"], "/efforts/#{effort["id"]}" %>
+      <%= effort["date"] %>
+      (<%= link_to "Delete", "/efforts/#{effort["id"]}", "method" => "delete" %>)
+      (<%= link_to "Edit", "/efforts/#{effort["id"]}/edit" %>)
+    </li>
+
+  <% end %>
+
+</ul>

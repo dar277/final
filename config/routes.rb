@@ -1,7 +1,7 @@
 Finalapp::Application.routes.draw do
 
   # Specify a custom home page
-  get "/" => "goals#index"
+  get "/" => "efforts#index"
 
 
   # Resource: Effort
