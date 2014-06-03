@@ -1,3 +1,21 @@
+Goal:
+  - outcome: string
+
+Strategy:
+  - description: string
+  - goal_id: integer
+
+Effort:
+  - date: integer
+  - value: integer
+  - goal_id: integer
+  - strategy_id: integer
+
+User:
+  - username: string
+  - password: string
+  - name: string
+
 # Example table for a typical Book model.
 #
 # Book:
