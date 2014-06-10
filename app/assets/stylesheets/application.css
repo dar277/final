@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+.review {
+  margin-top: 12px;
+  border-top: 2px solid gray;
+  padding-top: 12px;
+}
+

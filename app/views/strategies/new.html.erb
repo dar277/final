@@ -1,0 +1,34 @@
+<h1> Add strategies for your goal </h1>
+
+</div>
+
+<div class="row">
+<div class="col-md-5">
+
+    <%= form_tag "/strategies", "method" => "post"  %>
+
+      <div class="form-group">
+        <%= label_tag "description", "What will you do to reach your goal?" %>
+        <%= text_field_tag "description", "", "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "frequency", "How many days a week will you do it?" %>
+        <%= text_field_tag "frequency", "", "class" => "form-control" %>
+      </div>
+
+    <% @user = User.find_by("id" => cookies["user_id"]) %>
+
+      <div class="form-group">
+        <%= label_tag "goal_id", "What goal will this achieve?" %>
+        <%= select_tag "goal_id",
+            options_from_collection_for_select(@user.goals.read.order("outcome"),
+                        "id",
+                        "outcome"), "class" => "form-control" %>
+      </div>
+
+      <%= submit_tag "Add This Strategy", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/efforts" %>
+
+    </form>
+</div>
+</div>

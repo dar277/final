@@ -1,12 +1,14 @@
 Goal:
   - outcome: string
+  - user_id: integer
 
 Strategy:
   - description: string
+  - frequency: integer
   - goal_id: integer
 
 Effort:
-  - date: integer
+  - date: datetime
   - value: integer
   - goal_id: integer
   - strategy_id: integer

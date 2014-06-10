@@ -1,20 +1,40 @@
-<h1> Effort index </h1>
+<h1> Dashboard </h1>
 
-<% all_efforts = Effort.read %>
+<% @user = User.find_by("id" => cookies["user_id"]) %>
+<% if @user.present? %>
+<strong>Hi <%= @user["name"] %>!</strong>
 
-<%= link_to "Add a New Day's effort", "/efforts/new" %>
+<% all_goals = @user.goals.read %>
 
-<ul>
+<% all_goals.each do |goal| %>
 
-  <% all_efforts.each do |effort| %>
+<h2> Goal: <%= goal["outcome"] %> </h2>
 
-    <li>
-      <%= link_to effort["value"], "/efforts/#{effort["id"]}" %>
-      <%= effort["date"] %>
-      (<%= link_to "Delete", "/efforts/#{effort["id"]}", "method" => "delete" %>)
-      (<%= link_to "Edit", "/efforts/#{effort["id"]}/edit" %>)
-    </li>
+      (<%= link_to "Delete", "/goals/#{goal["id"]}", "method" => "delete" %>)
+      (<%= link_to "Edit", "/goals/#{goal["id"]}/edit" %>)
 
-  <% end %>
+    <% all_strategies = Strategy.where(:goal_id => goal["id"]) %>
 
-</ul>
+    <% all_strategies.each do |strategy| %>
+
+         <li>
+         <%= strategy["description"] %>
+         (<%= link_to "Delete", "/strategies/#{strategy["id"]}", "method" => "delete" %>)
+         (<%= link_to "Edit", "/strategies/#{strategy["id"]}/edit" %>)
+         <strong>
+
+         <%= strategy["frequency"] %> times per week
+         </strong>
+
+         <%= Effort.where(:strategy_id => strategy["id"]).average(:value) %>
+
+         </li>
+
+         <% end %>
+
+    <% end %>
+
+<% else %>
+<p> "Sign up or sign in to get tracking!" </p>
+
+<% end %>

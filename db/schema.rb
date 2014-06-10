@@ -11,22 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603031110) do
+ActiveRecord::Schema.define(version: 20140610194805) do
 
   create_table "efforts", force: true do |t|
-    t.integer "date"
-    t.integer "value"
-    t.integer "goal_id"
-    t.integer "strategy_id"
+    t.datetime "date"
+    t.integer  "value"
+    t.integer  "goal_id"
+    t.integer  "strategy_id"
   end
 
   create_table "goals", force: true do |t|
-    t.string "outcome"
+    t.string  "outcome"
+    t.integer "user_id"
   end
 
   create_table "strategies", force: true do |t|
     t.string  "description"
     t.integer "goal_id"
+    t.integer "frequency"
   end
 
   create_table "users", force: true do |t|

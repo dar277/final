@@ -1,18 +1,32 @@
 <h1> Add new effort </h1>
 
-<form action="/efforts" method="post">
+<%= form_tag "/efforts", "method" => "post"  %>
 
-  <p>
-    <label>Today's date</label>
-    <input type="text" name="date">
-  </p>
+<div class="row">
+<div class="col-md-5">
+
+      <div class="form-group">
+        <%= label_tag "strategy_id", "What did you do?" %>
+        <%= select_tag "strategy_id",
+            options_from_collection_for_select(Strategy.read.order("description"),
+                        "id",
+                        "description"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input name="date" value="<%= Date.today %>" type="date" class="form-control input-md">
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "value", "" %><%= select_tag :value, options_for_select([['Yes',2],['Kinda',1],['No',0]]) %>
+      </div>
+
+ <%= submit_tag "Save effort", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/efforts" %>
 
 
-  <p>
-    <label>Today's score (0,.5,1)</label>
-    <input type="text" name="value">
-  </p>
+    </form>
 
-  <input type="submit"> or <a href="/directors">Cancel</a>
+</div>
+</div>
 
-</form>
