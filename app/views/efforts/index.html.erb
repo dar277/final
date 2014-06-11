@@ -1,6 +1,8 @@
 <h1> Dashboard </h1>
 
-<div>
+<div class="row">
+<div class="col-md-12"
+
 <% @user = User.find_by("id" => cookies["user_id"]) %>
 <% if @user.present? %>
 <strong>Hi <%= @user["name"] %>!</strong>
@@ -41,3 +43,6 @@
 <p> "Sign up or sign in to get tracking!" </p>
 
 <% end %>
+
+</div>
+</div>
