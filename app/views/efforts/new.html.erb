@@ -19,7 +19,8 @@
       </div>
 
       <div class="form-group">
-        <%= label_tag "value", "" %><%= select_tag :value, options_for_select([['Yes',2],['Kinda',1],['No',0]]) %>
+        <%= label_tag "value", "Did you do it?" %>
+      <%= select_tag :value, options_for_select([['Yes',100],['Kinda',50],['No',0]]) %>
       </div>
 
  <%= submit_tag "Save effort", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/efforts" %>

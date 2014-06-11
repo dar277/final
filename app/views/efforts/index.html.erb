@@ -1,5 +1,6 @@
 <h1> Dashboard </h1>
 
+<div>
 <% @user = User.find_by("id" => cookies["user_id"]) %>
 <% if @user.present? %>
 <strong>Hi <%= @user["name"] %>!</strong>
@@ -21,12 +22,14 @@
          <%= strategy["description"] %>
          (<%= link_to "Delete", "/strategies/#{strategy["id"]}", "method" => "delete" %>)
          (<%= link_to "Edit", "/strategies/#{strategy["id"]}/edit" %>)
-         <strong>
 
-         <%= strategy["frequency"] %> times per week
+         <%= strategy["frequency"] %> times per week:
+
+
+         <strong> You are
+<% frequency = strategy["frequency"] %>
+         <%= Effort.where(:strategy_id => strategy["id"]).average(:value)/frequency %> percent of the way there!
          </strong>
-
-         <%= Effort.where(:strategy_id => strategy["id"]).average(:value) %>
 
          </li>
 

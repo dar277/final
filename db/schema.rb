@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610194805) do
+ActiveRecord::Schema.define(version: 20140611002055) do
 
   create_table "efforts", force: true do |t|
     t.datetime "date"
